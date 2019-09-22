@@ -74,6 +74,17 @@
             <jvmarg line="-ea"/>
             <classpath refid="DevOps.classpath"/>
         </junit>
+   < target name="test" depends="compile">
+    <junit printsummary="on" fork="true" haltonfailure="yes">
+        <classpath refid="junit.class.path" />
+        <formatter type="xml" />
+        <batchtest todir="${test.report.dir}">
+            <fileset dir="${test.dir}">
+                <include name="**/*Test*.java" />
+            </fileset>
+        </batchtest>
+    </junit>
+   </target>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
