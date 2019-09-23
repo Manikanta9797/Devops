@@ -19,7 +19,7 @@
 <!-- compile block-->
  <target name="compile">
    <mkdir dir="build"/>
-    <javac srcdir="src" destdir="build" >
+    <javac srcdir="src" destdir="build" includeantruntime="true">
     <classpath refid="classpath.base"/>
 </javac>
  </target>
@@ -27,7 +27,7 @@
 <!-- BUILD BLOCK -->
 <target name="build" depends="compile">
 <mkdir dir="build"/>
-<javac srcdir="src" destdir="build" />
+<javac srcdir="src" destdir="build" includeantruntime="true"/>
 <classpath refid="classpath.test"/>
 </target>
 
