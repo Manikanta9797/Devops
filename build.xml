@@ -12,9 +12,36 @@
 
   
 	<target name="compile" depends="init">
-		<javac srcdir="src" debug="true " destdir="build/classes">
+		
+		<javac srcdir="src" debug="true " destdir="build/classes" includeantruntime="false">
 			<classpath refid="compile.classpath"/>
 		</javac>
 	</target>
+	<target name="build" depends="compile">
+		<mkdir dir="build"/>
+		<javac srcdir="src" destdir="build" includeantruntime="false">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	<echo message="build done"/>
+	</target>
+	
+	<target name="run" depends="build">
+	<junit printsummary="on" haltonfailure="yes">
+        	<classpath>
+          		<path refid="compile.classpath" />
+        	</classpath>
+        	<formatter type="brief" usefile="false" />
+	<batchtest>
+            		<fileset dir="src" includes="**/*Test*.java" />
+        	</batchtest>
+    	</junit>
+	</target>
 
+	<target name="clean">
+    	<delete>
+        	<fileset dir="." includes="**/*.class" />
+    	</delete>
+    	<echo message="clean done" />
+  	</target>
+	
 </project>
