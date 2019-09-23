@@ -3,7 +3,12 @@
 
 
 <!--including the required jar files-->
-<path id="classpath.base"/>
+<path id="classpath.base">
+<fileset dir="lib">
+    <include name="*.jar">
+</include>
+</fileset>
+</path>
 <path id="classpath.test">
 <fileset dir="lib">
     <include name="*.jar">
@@ -11,15 +16,19 @@
 </fileset>
 </path>
 
-<target name="test" depends="run, clean"/>
-
+<target name="test" depends="run, clean">
+<mkdir dir="builds">
+<javac srcdir="src" destdir="builds" includeantruntime="false">
+    <classpath refid="classpath.base"/>
+</javac>
+</target>
 
 
 
 <!-- compile block-->
  <target name="compile">
    <mkdir dir="build"/>
-    <javac srcdir="src" destdir="build" includeantruntime="true">
+    <javac srcdir="src" destdir="build" includeantruntime="false">
     <classpath refid="classpath.base"/>
 </javac>
  </target>
@@ -27,7 +36,7 @@
 <!-- BUILD BLOCK -->
 <target name="build" depends="compile">
 <mkdir dir="build"/>
-<javac srcdir="src" destdir="build" includeantruntime="true"/>
+<javac srcdir="src" destdir="build" includeantruntime="false"/>
 <classpath refid="classpath.test"/>
 </target>
 
