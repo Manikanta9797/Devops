@@ -5,8 +5,10 @@
 			<include name="*.jar"/>
 		</fileset>
 	</path>
+
+	<target name="test" depends="run,clean"/>
 	<target name="init">
-		<mkdir dir="build/classes"/>
+		<mkdir dir="build"/>
 		<mkdir dir="dist"/>
 	</target>
 
