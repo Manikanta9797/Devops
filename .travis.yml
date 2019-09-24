@@ -1,0 +1,4 @@
+﻿language: java
+java:
+ -"stable"
+source: /lib/org.jupiter.junit.api.jar
