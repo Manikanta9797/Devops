@@ -17,7 +17,7 @@
 </path>
 
 <target name="test" depends="run, clean">
-<mkdir dir="builds">
+<mkdir dir="builds"/>
 <javac srcdir="src" destdir="builds" includeantruntime="false">
     <classpath refid="classpath.base"/>
 </javac>
