@@ -4,4 +4,10 @@ java:
      -openjdk8
 
 install: true
- 
+
+deploy:
+	-provider: s3 
+	access_key_id: $AWS_ACCESS
+	secret_access_key: $AWS_KEY	
+	bucket: 'buckets132'
+	skip_cleanup: true
